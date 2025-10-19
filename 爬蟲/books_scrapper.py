@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import time
 import re # 用於正規表達式清洗字串
 import urllib.parse
 from wcwidth import wcswidth
@@ -132,7 +131,7 @@ def scrape_book_series(series_url):
     except Exception as e:
         print(f"發生解析錯誤: {e}")
         return []
-def printfunction():
+def printfn():
     # 1. 定義每個欄位的目標顯示寬度 (以半形字符為單位)
     TITLE_WIDTH = 60 # 書名欄位寬度
     DISCOUNT_WIDTH = 16 # 折扣欄位寬度
@@ -164,7 +163,7 @@ def printfunction():
 # ----------------------------------------------------
 # 最終執行：請替換成您的系列網址
 # ----------------------------------------------------
-original_string = "我和班上第二可愛的女生成為朋友"
+original_string = "我和班上第二可愛的女生成為朋友 (1)"
 
 target_series_url = f"https://search.books.com.tw/search/query/key/{urllib.parse.quote(original_string)}/cat/all"
 results = scrape_book_series(target_series_url)
@@ -175,4 +174,4 @@ for book in results:
     if book['書名'] != "0" and book['書名'] != "可訂購時通知我":
         print(book)
 """
-printfunction()
+printfn()
